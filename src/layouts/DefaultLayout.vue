@@ -6,10 +6,13 @@
             <!-- v-toolbar-title: ツールバーのタイトル部分 -->
             <v-toolbar-title>Weather App</v-toolbar-title>
             <!-- v-spacer: スペースを空けて、右側のボタンを右寄せにする -->
-            <v-spacer></v-spacer>
+            <v-spacer />
             <!-- v-btn: ナビゲーション用のボタン。to属性でルーティング -->
             <v-btn to="/" text>Home</v-btn>
             <v-btn to="/about" text>About</v-btn>
+            <v-btn icon @click="toggleTheme">
+                <v-icon>{{ theme.global.current.value.dark ? 'mdi-white-balance-sunny' : 'mdi-weather-night' }}</v-icon>
+            </v-btn>
         </v-app-bar>
 
         <!-- v-main: メインコンテンツエリア。ルーティングされたページがここに表示される -->
@@ -27,4 +30,10 @@
 </template>
 
 <script setup lang="ts">
+import { useTheme } from 'vuetify';
+const theme = useTheme();
+
+const toggleTheme = () => {
+    theme.global.name.value = theme.global.current.value.dark ? 'light' : 'dark'
+}
 </script>

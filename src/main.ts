@@ -2,24 +2,14 @@ import { createApp } from 'vue'
 // Vuetifyのスタイルシートをインポート
 import "vuetify/styles"
 // Vuetify本体のファクトリ関数をインポート
-import { createVuetify } from 'vuetify'
-// Vuetifyの全コンポーネントをインポート
-import * as components from 'vuetify/components'
-// Vuetifyの全ディレクティブをインポート
-import * as directives from 'vuetify/directives'
+import "@mdi/font/css/materialdesignicons.css" // アイコンフォントのスタイルシートをインポート
 
 import App from '@/App.vue'
 import { router } from '@/router'
 import { pinia } from "@/store"
 import { i18n } from '@/i18n'
+import { vuetify } from '@/plugins/vuetify'
 
-// Vuetifyのインスタンスを作成
-// components: 使用するVuetifyコンポーネントを登録
-// directives: 使用するVuetifyディレクティブを登録
-const vuetify = createVuetify({
-    components,
-    directives,
-})
 
 const app = createApp(App)
 // ルーターをVueアプリに登録
