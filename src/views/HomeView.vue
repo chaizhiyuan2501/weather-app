@@ -5,12 +5,13 @@
             <v-col clos="12" md="6">
                 <h1 class="text-h5 mb-4">天気検索</h1>
 
-                <v-text-field v-model="city" label="都市名を入力" />
-                <v-btn @click="fetchWeather" class="mt-2" block>天気を取得</v-btn>
+                <v-text-field v-model="city" :label="$t('cityPlaceholder')" />
+                <v-btn @click="fetchWeather">{{ $t('search') }}</v-btn>
 
                 <WeatherCard v-if="weather" :weather="weather" />
-
-                <v-alert v-if="error" type="error" class="mt-4">天気取得失敗:{{ error.message }}</v-alert>
+                <v-alert v-if="error" type="error" class="mt-4">
+                    {{ $t('error') }}：{{ error.message }}
+                </v-alert>
             </v-col>
         </v-row>
     </v-container>
