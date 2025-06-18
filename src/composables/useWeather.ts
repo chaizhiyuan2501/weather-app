@@ -39,3 +39,22 @@ export async function useWeather(city: string, lang: string = "ja") {
         }
     }
 }
+// 何日以内の天気情報を取得する
+export async function fetchWeather(city: string, lang: string = "ja") {
+    const url = "https://api.openweathermap.org/data/2.5/weather";
+
+    try {
+        const response = await axios.get(url, {
+            params: {
+                q: city,
+                appid: apiKey,
+                units: "metric",
+                lang,
+            }
+        })
+        return { data: response.data, error: null };
+    } catch (error) {
+        return { data: null, error: error as Error };
+    }
+
+}
