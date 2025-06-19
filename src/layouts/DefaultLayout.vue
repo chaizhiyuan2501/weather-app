@@ -13,14 +13,8 @@
             <v-btn icon @click="toggleTheme">
                 <v-icon>{{ theme.global.current.value.dark ? 'mdi-white-balance-sunny' : 'mdi-weather-night' }}</v-icon>
             </v-btn>
-            <v-select
-                :items="langs"
-                v-model="locale"
-                variant="underlined"
-                density="compact"
-                hide-details
-                style="max-width: 150px"
-            ></v-select>
+            <v-select :items="langs" v-model="locale" variant="underlined" density="compact" hide-details
+                style="max-width: 150px"></v-select>
         </v-app-bar>
 
         <!-- v-main: メインコンテンツエリア。ルーティングされたページがここに表示される -->
@@ -39,15 +33,15 @@
 
 <script setup lang="ts">
 import { useTheme } from 'vuetify';
+import { computed } from 'vue';
+import { I18n } from 'vue-i18n';
 const theme = useTheme();
 
 const langs = ["ja", "en", "zh-CN", "zh-TW"];
 const locale = computed({
     get: () => i18n.global.locale.value,
-    set: (value) => {
-        (i18n.global.locale.value) = value;
-        // ここで言語変更の処理を追加することも可能
-    }
+    set: (val) => (i18n.global.locale.value = val)
+})
 });
 
 const toggleTheme = () => {
