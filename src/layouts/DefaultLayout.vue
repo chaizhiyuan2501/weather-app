@@ -34,7 +34,7 @@
 <script setup lang="ts">
 import { useTheme } from 'vuetify';
 import { computed } from 'vue';
-import { I18n } from 'vue-i18n';
+import { i18n } from '@/i18n'
 const theme = useTheme();
 
 const langs = ["ja", "en", "zh-CN", "zh-TW"];
@@ -42,7 +42,6 @@ const locale = computed({
     get: () => i18n.global.locale.value,
     set: (val) => (i18n.global.locale.value = val)
 })
-});
 
 const toggleTheme = () => {
     theme.global.name.value = theme.global.current.value.dark ? 'light' : 'dark'
